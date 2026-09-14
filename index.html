@@ -403,6 +403,98 @@
       color: var(--accent);
     }
 
+    /* Email radio tiles */
+    .email-tiles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .email-tiles label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      background: var(--surface);
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .email-tiles label:hover {
+      border-color: var(--border-focus);
+    }
+
+    .email-tiles label:focus-within {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .email-tiles input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .email-tiles .radio-dot {
+      width: 1.375rem;
+      height: 1.375rem;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .email-tiles .radio-dot::after {
+      content: '';
+      width: 0.625rem;
+      height: 0.625rem;
+      border-radius: 50%;
+      background: transparent;
+      transition: background 0.15s;
+    }
+
+    .email-tiles label:has(input:checked) {
+      border-color: var(--accent);
+      border-width: 1.5px;
+      background: var(--accent-soft);
+    }
+
+    .email-tiles label:has(input:checked) .radio-dot {
+      border-color: var(--accent);
+    }
+
+    .email-tiles label:has(input:checked) .radio-dot::after {
+      background: var(--accent);
+    }
+
+    .email-tiles label:has(input:checked) .tile-text {
+      color: var(--accent);
+    }
+
+    .email-tiles label:has(input:checked) svg path,
+    .email-tiles label:has(input:checked) svg rect {
+      stroke: var(--accent);
+    }
+
+    .email-tiles .tile-text {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .email-tiles svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+    }
+
     /* Reflection questions */
     .reflection {
       background: var(--surface);
@@ -623,7 +715,22 @@
       <div class="field-row">
         <div class="field">
           <label for="llm">Which LLM do you use?</label>
-          <input type="text" id="llm" name="llm" placeholder="e.g. Claude, GPT, Gemini...">
+          <select id="llm" name="llm" onchange="toggleOtherLlm()">
+            <option value="" disabled selected>Select one</option>
+            <option value="chatgpt">ChatGPT (OpenAI)</option>
+            <option value="claude">Claude (Anthropic)</option>
+            <option value="gemini">Gemini (Google)</option>
+            <option value="copilot">Copilot (Microsoft)</option>
+            <option value="llama">Llama (Meta)</option>
+            <option value="midjourney">Midjourney</option>
+            <option value="stable-diffusion">Stable Diffusion</option>
+            <option value="local">Local / self-hosted</option>
+            <option value="multiple">Multiple</option>
+            <option value="other">Other</option>
+          </select>
+          <div id="other-llm-field" class="field" style="display:none; margin-top: 0.5rem; margin-bottom: 0;">
+            <input type="text" name="llm-other" placeholder="Which LLM?">
+          </div>
         </div>
         <div class="field">
           <label for="frequency">How often do you use AI?</label>
@@ -707,12 +814,31 @@
 
       <div class="divider"></div>
 
-      <div class="field" style="margin-bottom: 0.75rem;">
-        <label for="email">Your email <span class="optional">(optional)</span></label>
+      <div class="field" style="margin-bottom: 0.5rem;">
+        <label>Your email <span class="optional">(optional)</span></label>
+        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.75rem;">Choose the option that feels right. No judgement.</p>
+        <div class="email-tiles">
+          <label>
+            <input type="radio" name="email-choice" value="privacy" onchange="toggleEmailField()">
+            <span class="radio-dot"></span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="tile-text">I'd rather not share an email</span>
+          </label>
+          <label>
+            <input type="radio" name="email-choice" value="willing" onchange="toggleEmailField()">
+            <span class="radio-dot"></span>
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M22 7l-10 6L2 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="tile-text">I'm happy to share my email</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field" id="email-field" style="display:none; margin-bottom: 1rem;">
         <input type="email" id="email" name="email" placeholder="your@email.com">
       </div>
 
       <div style="background: var(--surface-2); border-radius: var(--radius); padding: 1rem 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1.5rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0; margin-top: 2px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span style="font-size: 0.8125rem; color: var(--green); line-height: 1.7;">We will never sell or use this data for marketing. This census exists for one reason only: to understand whether AI is being used responsibly. Not for waste. Not for harm. For the future.</span>
       </div>
 
@@ -756,6 +882,16 @@
         }
       })
       .catch(() => {});
+
+    function toggleOtherLlm() {
+      const val = document.getElementById('llm').value;
+      document.getElementById('other-llm-field').style.display = val === 'other' ? 'block' : 'none';
+    }
+
+    function toggleEmailField() {
+      const choice = document.querySelector('input[name="email-choice"]:checked');
+      document.getElementById('email-field').style.display = choice && choice.value === 'willing' ? 'block' : 'none';
+    }
 
     function toggleOtherOutput() {
       const checked = document.querySelector('input[name="output"][value="other"]').checked;
