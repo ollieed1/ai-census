@@ -285,6 +285,21 @@
       .email-choice label { text-align: left; }
     }
 
+    .field-error {
+      display: none;
+      font-size: 0.75rem;
+      color: var(--red);
+      margin-top: 0.25rem;
+    }
+
+    .field-error.visible {
+      display: block;
+    }
+
+    .field input:user-invalid {
+      border-color: var(--red);
+    }
+
     /* Output icon cards */
     .check-group {
       display: flex;
@@ -650,11 +665,13 @@
       <div class="field-row">
         <div class="field">
           <label for="github">GitHub <span class="optional">(optional)</span></label>
-          <input type="url" id="github" name="github" placeholder="https://github.com/username">
+          <input type="url" id="github" name="github" placeholder="https://github.com/username" pattern="https?://(www\.)?github\.com/.+" title="Please enter a valid GitHub URL">
+          <span class="field-error" id="github-error"></span>
         </div>
         <div class="field">
           <label for="linkedin">LinkedIn <span class="optional">(optional)</span></label>
-          <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username">
+          <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username" pattern="https?://(www\.)?linkedin\.com/(in|company)/.+" title="Please enter a valid LinkedIn URL">
+          <span class="field-error" id="linkedin-error"></span>
         </div>
       </div>
 
@@ -883,6 +900,26 @@
         }
       })
       .catch(() => {});
+
+    function validateUrl(input, errorId, domain) {
+      const el = document.getElementById(input);
+      const err = document.getElementById(errorId);
+      el.addEventListener('blur', function() {
+        const val = el.value.trim();
+        if (!val) { err.textContent = ''; err.classList.remove('visible'); return; }
+        if (!val.match(new RegExp('^https?://(www\\.)?' + domain + '/.+'))) {
+          err.textContent = 'That doesn\'t look like a ' + domain + ' URL';
+          err.classList.add('visible');
+          el.style.borderColor = 'var(--red)';
+        } else {
+          err.textContent = '';
+          err.classList.remove('visible');
+          el.style.borderColor = '';
+        }
+      });
+    }
+    validateUrl('github', 'github-error', 'github\\.com');
+    validateUrl('linkedin', 'linkedin-error', 'linkedin\\.com');
 
     function toggleOtherLlm() {
       const val = document.getElementById('llm').value;
