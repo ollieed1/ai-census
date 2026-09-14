@@ -1,93 +1,114 @@
-# AI Census - Tokens for Good
+# AI Census
 
-**Domain:** ai-census.org
-**Repo:** github.com/ollieed1/ai-licence
-**Netlify:** ai-census.netlify.app (custom domain TBD - add in Netlify dashboard)
-**Stack:** Static HTML/CSS/JS, no build step, dark theme
+**Domain:** ai-census.org (connected via Namesco DNS, pending propagation)
+**Repo:** github.com/ollieed1/ai-census
+**Netlify:** ai-census.netlify.app (site ID: a73d9293-70ad-4299-81be-423357bf2e86)
+**Stack:** Static HTML/CSS/JS, no build step, Netlify Forms, Netlify Functions
+**Paper:** file 01M2G2VH7R2P8PBB0TQBZDJ9KD (page 1-0)
 
 ---
 
 ## What is this?
 
-An informal census about responsible AI usage. Not a legal document. A conversation about whether your AI use is worth the natural resources it consumes.
-
-If you qualify, you receive a licence (certificate) that signals you are a trusted person using AI tools for good.
+An informal census to understand how people use AI and whether that usage is responsible. Not marketing, not legal. A conversation about whether AI tools are serving humanity well.
 
 ---
 
-## Core concept: Tokens for Good
+## Pages
 
-AI runs on real energy. This project treats AI compute as a natural resource that should be allocated responsibly.
-
-### Encouraged use (green)
-- Coding to build something useful for others
-- Research and science that benefits humanity
-- Students learning (AI as tutor, not shortcut)
-- Creative exploration (not for resale as your own work)
-
-### Needs scrutiny (amber)
-- Business use: write your business plan without AI first. If it has merit, a licence may grant resources to help build it for the greater good
-
-### Not permitted (red)
-- AI-generated social media content (floods feeds, wastes energy, erodes trust)
-- Generating harmful imagery of people
-- Fake news / narrative-pushing journalism
-- Selling AI output as human-made work
-
-### Abuse consequences
-If you abuse your licence, it creates issues with your usage - outputs may be watermarked or tainted. Creates a token budget that prevents misuse.
+- **index.html** -- Census form (the homepage, single page)
+- **thanks.html** -- Confirmation page ("You are part of something.")
+- **404.html** -- Not yet built (designed in Paper)
+- **contact.html** -- Not yet built (designed in Paper)
 
 ---
 
-## Census form fields
+## Form fields
 
 ### About you
-- **Full name** (text)
-- **Email** (text, optional)
-- **Nationality** (text)
-- **Role** (dropdown): Student / Professional / Researcher / Hobbyist / Other
-- **Industry** (dropdown): Design / Engineering / Finance / Healthcare / Education / Research / Science / Media & Journalism / Law / Government / Non-profit / Other
+- **What should we call you?** (text)
+- **Country** (dropdown, 30 countries + Other)
+- **GitHub** (URL, optional, validated against github.com)
+- **LinkedIn** (URL, optional, validated against linkedin.com)
+- **I am a** (dropdown): Student / Personal use / Company
+- **Industry** (dropdown): Design / Engineering / Finance / Healthcare / Education / Research / Science / Media / Law / Government / Non-profit / Other
 
-### Your AI usage
-- **Primary LLM** (dropdown): ChatGPT / Claude / Gemini / Copilot / Llama / Midjourney / Stable Diffusion / Local model / Multiple / Other
-- **Frequency** (radio pills): Daily / A few times a week / A few times a month / Rarely
-- **Main output** (checkboxes): Code / Images / Video / 3D Models / Data & Analysis / Research & Writing / Music & Audio
+### Company fields (revealed when Company selected)
+- **Company size** (dropdown): 1-10 / 11-50 / 51-200 / 201-1,000 / 1,001-5,000 / 5,001+
+- **How many use AI at work?** (dropdown): Just me / A few people / Most of the team / Company-wide / Not sure
+
+### AI usage
+- **Which LLM do you use?** (dropdown + Other text input): ChatGPT / Claude / Gemini / Copilot / Llama / Midjourney / Stable Diffusion / Local / Multiple / Other
+- **How often do you use AI?** (dropdown): Daily / Weekly / Monthly / Rarely
+- **What do you mainly create?** (icon card multi-select): Code / Image / Video / 3D Models / Data / Research / Other (with text input)
 
 ### Reflection
-- **"Do you feel that what you create with AI is beneficial relative to the energy it consumes?"** (radio): Yes absolutely / Mostly yes / I'm not sure / Probably not
-- **"Is what you do with AI for the greater good of humanity?"** (radio): Yes / I think so / It's mostly personal / No, it's just convenient
-- **Free text:** Briefly describe what you use AI for
+- **Do you feel that what you create is worth the energy it consumes?** (card select): Yes, absolutely / Sometimes / Not sure / Probably not
+- **Is what you do for the greater good of humanity?** (card select): Yes, directly / Indirectly / I'm not sure yet / Honestly, no
 
-### Submit
-- Button: "Apply for your AI Licence"
-- Note: data will not be sold or shared, exists solely for issuing a certificate
-
----
-
-## Design
-
-- Dark theme (near-black background #0A0A0F)
-- Indigo accent (#6366F1)
-- 720px max-width, single column
-- System font stack
-- Manifesto section with green/amber/red principle icons
-- Toggle-style checkboxes, pill-style radios
-- Clean, informal, not corporate
+### Email
+- **Your email** (text input, optional)
+- **Sharing preference** (radio tiles): I'd rather not share / I'm happy to share
 
 ---
 
-## Current state
+## Design system
 
-- [x] index.html built with full form UI (no backend)
-- [x] GitHub repo created and pushed
-- [x] Netlify site created (ai-census.netlify.app)
-- [ ] Custom domain (ai-census.org) needs adding in Netlify dashboard > Domain management
-- [ ] Design iteration in Paper (connection needs fixing)
-- [ ] Backend / form submission (future)
-- [ ] Licence/certificate generation (future)
+- **Background:** #FFFFFF (white)
+- **Primary accent:** #1B4332 (deep evergreen)
+- **Secondary green:** #2D6A4F
+- **Selected/tint:** #D8F3DC (mint)
+- **Surface:** #FAFAFA
+- **Trust tint:** #F0FFF4
+- **Borders:** #E9ECEF
+- **Text:** #212529
+- **Muted text:** #6C757D
+- **Error:** #DC2626 / #FEF2F2
+- **Font:** System stack (-apple-system, BlinkMacSystemFont, system-ui)
+- **All font sizes in rem** for accessibility
+- **Max width:** 720px, single column, centred
+- **Border radius:** 10px inputs, 12px cards, 14px containers
+- **Focus states:** focus-visible outlines, focus-within on card labels
+- **Keyboard nav:** All inputs focusable (no display:none on hidden radios/checkboxes)
+
+---
+
+## Infrastructure
+
+- **Forms:** Netlify Forms with honeypot spam protection (bot-field)
+- **Data storage:** Netlify managed (US, DPA in place)
+- **Submission counter:** Netlify Function at /.netlify/functions/submission-count (shows after 1,000 submissions, needs NETLIFY_ACCESS_TOKEN env var)
+- **Spam protection:** Honeypot field. Cloudflare rate limiting planned for when custom domain is active
+- **GDPR:** Privacy notice in footer (collapsible). Controller: AI Census project (EU). Lawful basis: consent. Deletion via hello@ai-census.org
+
+---
+
+## Paper artboards
+
+1. **AI Census Form** -- Empty state (default placeholders)
+2. **Confirmation Page** -- "You are part of something."
+3. **Form -- Filled State** -- Maria Santos example, Company selected, multiple outputs
+4. **Form -- Error State** -- Red error banner, field validation errors, disabled submit
+5. **404 Page** -- Centred error with actions
+6. **Contact Page** -- Name, email, subject dropdown, message textarea
+7. **Desktop Browser Mockup** -- White/green theme in browser chrome
+
+---
+
+## TODO
+
+- [ ] DNS propagation (Namesco A record -> 75.2.60.5, CNAME www -> ai-census.netlify.app)
+- [ ] Set up hello@ai-census.org email
+- [ ] Add NETLIFY_ACCESS_TOKEN env var for submission counter function
+- [ ] Build 404.html from Paper design
+- [ ] Build contact.html from Paper design
+- [ ] Email Netlify for signed DPA copy
+- [ ] Consider Netlify Analytics ($9/mo) for visitor counts
+- [ ] Unique census ID system (future -- for repeat user tracking)
+- [ ] Certificate/licence generation (future)
 
 ---
 
 ## Data promise
 
-> I will not sell or use this data for any other reason than giving you a certificate that says you are a good human being using tools for good - not wasting human resources and not destroying the future for children or the development of humanity.
+This data will not be sold or shared. It exists solely to understand how AI is being used and whether that usage is responsible. Not for waste. Not for harm. For the future.
