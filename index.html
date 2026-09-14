@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Licence - Tokens for Good</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0F;
+      --surface: #13131A;
+      --surface-2: #1A1A24;
+      --border: #2A2A3A;
+      --border-focus: #6366F1;
+      --text: #E8E8ED;
+      --text-muted: #8888A0;
+      --accent: #6366F1;
+      --accent-soft: #6366F120;
+      --green: #22C55E;
+      --green-soft: #22C55E18;
+      --red: #EF4444;
+      --red-soft: #EF444418;
+      --amber: #F59E0B;
+      --amber-soft: #F59E0B18;
+      --radius: 10px;
+      --radius-lg: 16px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    .header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      color: white;
+      font-weight: 800;
+    }
+
+    .version-tag {
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      padding: 2px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    /* Main */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* Manifesto */
+    .manifesto {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+
+    .manifesto h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .manifesto-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .principle {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .principle-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .principle-icon.good {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .principle-icon.bad {
+      background: var(--red-soft);
+      color: var(--red);
+    }
+
+    .principle-icon.caution {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .principle p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .principle strong {
+      color: var(--text);
+    }
+
+    /* Form */
+    .form-section {
+      margin-bottom: 40px;
+    }
+
+    .form-section-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .form-section-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .field label .optional {
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .field input[type="text"],
+    .field input[type="email"],
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238888A0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 520px) {
+      .field-row { grid-template-columns: 1fr; }
+    }
+
+    /* Checkbox group */
+    .check-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .check-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .check-group label:hover {
+      border-color: var(--border-focus);
+      color: var(--text);
+    }
+
+    .check-group input[type="checkbox"] {
+      display: none;
+    }
+
+    .check-group input[type="checkbox"]:checked + span {
+      color: var(--accent);
+    }
+
+    .check-group label:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* Radio pills */
+    .radio-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .radio-pills label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .radio-pills input[type="radio"] { display: none; }
+
+    .radio-pills label:hover {
+      border-color: var(--border-focus);
+      color: var(--text);
+    }
+
+    .radio-pills label:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* Reflection questions */
+    .reflection {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .reflection p {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 40px 0;
+    }
+
+    /* Submit */
+    .submit-area {
+      text-align: center;
+    }
+
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 36px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      color: white;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .submit-btn:hover { opacity: 0.9; }
+
+    .submit-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-mark">AI</div>
+        ai-licence.org
+      </div>
+      <span class="version-tag">Census v0.1</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>Tokens for <span>Good</span></h1>
+      <p>AI consumes real natural resources. This is an informal census to understand how people are using AI, and whether that usage is worth the energy it costs. If you qualify, you'll receive a licence that signals you're using these tools responsibly.</p>
+    </div>
+
+    <!-- Manifesto -->
+    <div class="manifesto">
+      <h2>What we believe</h2>
+      <div class="manifesto-grid">
+        <div class="principle">
+          <div class="principle-icon good">&#10003;</div>
+          <p><strong>Coding to build something useful</strong> -- using AI to help bring an idea to life that serves others is a fair use of the resource.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon good">&#10003;</div>
+          <p><strong>Research and science</strong> -- accelerating discovery, analysing data, exploring problems that benefit humanity.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon good">&#10003;</div>
+          <p><strong>Students learning</strong> -- AI as a tutor, not a shortcut. Understanding what it gives you, not just copying it.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon good">&#10003;</div>
+          <p><strong>Creative exploration</strong> -- AI art for personal creativity and experimentation, not for selling as your own work.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon caution">!</div>
+          <p><strong>Business use needs scrutiny</strong> -- write your business plan yourself. If the idea has merit, a licence may grant you resources to build it for the greater good.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon bad">&#10005;</div>
+          <p><strong>AI-generated social media content</strong> -- flooding feeds with synthetic content wastes energy and erodes trust.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon bad">&#10005;</div>
+          <p><strong>Generating harmful imagery</strong> -- no licence will ever be granted for this. Full stop.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon bad">&#10005;</div>
+          <p><strong>Fake news and narrative-pushing</strong> -- AI-generated journalism or media created to push an agenda is a misuse of the resource.</p>
+        </div>
+        <div class="principle">
+          <div class="principle-icon bad">&#10005;</div>
+          <p><strong>Selling AI output as human-made</strong> -- if AI made it, say so. Don't profit from a lie.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form: About You -->
+    <div class="form-section">
+      <h2 class="form-section-title">About you</h2>
+      <p class="form-section-desc">Tell us who you are. This data will never be sold or used for anything other than issuing your licence.</p>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" placeholder="Jane Smith">
+        </div>
+        <div class="field">
+          <label for="email">Email <span class="optional">(optional)</span></label>
+          <input type="email" id="email" placeholder="jane@example.com">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="nationality">Nationality</label>
+          <input type="text" id="nationality" placeholder="e.g. British, French, Nigerian">
+        </div>
+        <div class="field">
+          <label for="role">Are you a...</label>
+          <select id="role">
+            <option value="" disabled selected>Select one</option>
+            <option value="student">Student</option>
+            <option value="professional">Professional</option>
+            <option value="researcher">Researcher</option>
+            <option value="hobbyist">Hobbyist</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="industry">Industry</label>
+        <select id="industry">
+          <option value="" disabled selected>Select your industry</option>
+          <option value="design">Design</option>
+          <option value="engineering">Engineering</option>
+          <option value="finance">Finance</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="education">Education</option>
+          <option value="research">Research</option>
+          <option value="science">Science</option>
+          <option value="media">Media / Journalism</option>
+          <option value="law">Law</option>
+          <option value="government">Government</option>
+          <option value="nonprofit">Non-profit</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Form: Your AI Usage -->
+    <div class="form-section">
+      <h2 class="form-section-title">Your AI usage</h2>
+      <p class="form-section-desc">Help us understand what tools you use and how.</p>
+
+      <div class="field">
+        <label for="llm">Which LLM do you primarily use?</label>
+        <select id="llm">
+          <option value="" disabled selected>Select one</option>
+          <option value="chatgpt">ChatGPT (OpenAI)</option>
+          <option value="claude">Claude (Anthropic)</option>
+          <option value="gemini">Gemini (Google)</option>
+          <option value="copilot">Copilot (Microsoft)</option>
+          <option value="llama">Llama (Meta)</option>
+          <option value="midjourney">Midjourney</option>
+          <option value="stable-diffusion">Stable Diffusion</option>
+          <option value="local">Local / self-hosted model</option>
+          <option value="multiple">Multiple</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>How often do you use AI?</label>
+        <div class="radio-pills">
+          <label><input type="radio" name="frequency" value="daily"><span>Daily</span></label>
+          <label><input type="radio" name="frequency" value="weekly"><span>A few times a week</span></label>
+          <label><input type="radio" name="frequency" value="monthly"><span>A few times a month</span></label>
+          <label><input type="radio" name="frequency" value="rarely"><span>Rarely</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>What is your main output?</label>
+        <div class="check-group">
+          <label><input type="checkbox" value="code"><span>Code</span></label>
+          <label><input type="checkbox" value="image"><span>Images</span></label>
+          <label><input type="checkbox" value="video"><span>Video</span></label>
+          <label><input type="checkbox" value="3d"><span>3D Models</span></label>
+          <label><input type="checkbox" value="data"><span>Data / Analysis</span></label>
+          <label><input type="checkbox" value="research"><span>Research / Writing</span></label>
+          <label><input type="checkbox" value="music"><span>Music / Audio</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Reflection -->
+    <div class="form-section">
+      <h2 class="form-section-title">Reflection</h2>
+      <p class="form-section-desc">These aren't trick questions. Just be honest.</p>
+
+      <div class="reflection">
+        <p>Do you feel that what you create with AI is beneficial relative to the energy it consumes?</p>
+        <div class="radio-pills">
+          <label><input type="radio" name="beneficial" value="yes"><span>Yes, absolutely</span></label>
+          <label><input type="radio" name="beneficial" value="mostly"><span>Mostly, yes</span></label>
+          <label><input type="radio" name="beneficial" value="unsure"><span>I'm not sure</span></label>
+          <label><input type="radio" name="beneficial" value="no"><span>Probably not</span></label>
+        </div>
+      </div>
+
+      <div class="reflection">
+        <p>Is what you do with AI for the greater good of humanity?</p>
+        <div class="radio-pills">
+          <label><input type="radio" name="greater-good" value="yes"><span>Yes</span></label>
+          <label><input type="radio" name="greater-good" value="i-think-so"><span>I think so</span></label>
+          <label><input type="radio" name="greater-good" value="its-personal"><span>It's mostly personal</span></label>
+          <label><input type="radio" name="greater-good" value="no"><span>No, it's just convenient</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="describe">Briefly describe what you use AI for</label>
+        <textarea id="describe" placeholder="e.g. I'm a design student using AI to prototype UI ideas faster. I always rework the output by hand."></textarea>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Submit -->
+    <div class="submit-area">
+      <button class="submit-btn" onclick="handleSubmit()">Apply for your AI Licence</button>
+      <p class="submit-note">This data will not be sold or shared. It exists solely to issue you a certificate that signals you are a responsible user of AI tools. If you abuse your licence, it may be revoked or your outputs watermarked.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>ai-licence.org -- This is not a legal document. It's a census and a conversation about responsible AI use.</p>
+  </footer>
+
+  <script>
+    function handleSubmit() {
+      const name = document.getElementById('name').value.trim();
+      if (!name) {
+        alert('Please enter your name to apply.');
+        return;
+      }
+      // Placeholder -- no backend yet
+      alert(`Thanks, ${name}. Your application has been received. This is a prototype -- licence generation coming soon.`);
+    }
+  </script>
+
+</body>
+</html>
