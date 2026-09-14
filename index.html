@@ -465,7 +465,7 @@
     <!-- Hero -->
     <div class="hero">
       <h1>Tokens for <span>Good</span></h1>
-      <p>AI consumes real natural resources. This is an informal census to understand how people are using AI, and whether that usage is worth the energy it costs. If you qualify, you'll receive a licence that signals you're using these tools responsibly.</p>
+      <p>AI consumes real natural resources. This is an informal census to understand how people are using AI, and whether that usage is worth the energy it costs.</p>
     </div>
 
     <!-- Manifesto -->
@@ -490,7 +490,7 @@
         </div>
         <div class="principle">
           <div class="principle-icon caution">!</div>
-          <p><strong>Business use needs scrutiny</strong> -- write your business plan yourself. If the idea has merit, a licence may grant you resources to build it for the greater good.</p>
+          <p><strong>Business use needs scrutiny</strong> -- write your business plan yourself. AI should augment your thinking, not replace it.</p>
         </div>
         <div class="principle">
           <div class="principle-icon bad">&#10005;</div>
@@ -519,7 +519,7 @@
     <!-- Form: About You -->
     <div class="form-section">
       <h2 class="form-section-title">About you</h2>
-      <p class="form-section-desc">Tell us who you are. This data will never be sold or used for anything other than issuing your licence.</p>
+      <p class="form-section-desc">Tell us who you are. This data will never be sold or used for marketing.</p>
 
       <div class="field-row">
         <div class="field">
@@ -527,8 +527,41 @@
           <input type="text" id="name" name="name" placeholder="Jane Smith">
         </div>
         <div class="field">
-          <label for="nationality">Nationality</label>
-          <input type="text" id="nationality" name="nationality" placeholder="e.g. British, French, Nigerian">
+          <label for="nationality">Country</label>
+          <select id="nationality" name="country">
+            <option value="" disabled selected>Select your country</option>
+            <option value="AT">Austria</option>
+            <option value="BE">Belgium</option>
+            <option value="BR">Brazil</option>
+            <option value="CA">Canada</option>
+            <option value="CN">China</option>
+            <option value="CZ">Czech Republic</option>
+            <option value="DK">Denmark</option>
+            <option value="FI">Finland</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="GR">Greece</option>
+            <option value="IN">India</option>
+            <option value="IE">Ireland</option>
+            <option value="IL">Israel</option>
+            <option value="IT">Italy</option>
+            <option value="JP">Japan</option>
+            <option value="KR">South Korea</option>
+            <option value="MX">Mexico</option>
+            <option value="NL">Netherlands</option>
+            <option value="NG">Nigeria</option>
+            <option value="NO">Norway</option>
+            <option value="PL">Poland</option>
+            <option value="PT">Portugal</option>
+            <option value="RO">Romania</option>
+            <option value="ES">Spain</option>
+            <option value="SE">Sweden</option>
+            <option value="CH">Switzerland</option>
+            <option value="TR">Turkey</option>
+            <option value="GB">United Kingdom</option>
+            <option value="US">United States</option>
+            <option value="other">Other</option>
+          </select>
         </div>
       </div>
 
@@ -640,14 +673,14 @@
       <div class="field">
         <label>What is your main output?</label>
         <div class="check-group">
-          <label><input type="checkbox" name="output[]" value="code"><span>Code</span></label>
-          <label><input type="checkbox" name="output[]" value="image"><span>Images</span></label>
-          <label><input type="checkbox" name="output[]" value="video"><span>Video</span></label>
-          <label><input type="checkbox" name="output[]" value="3d"><span>3D Models</span></label>
-          <label><input type="checkbox" name="output[]" value="data"><span>Data / Analysis</span></label>
-          <label><input type="checkbox" name="output[]" value="research"><span>Research / Writing</span></label>
-          <label><input type="checkbox" name="output[]" value="music"><span>Music / Audio</span></label>
-          <label><input type="checkbox" name="output[]" value="other"><span>Other</span></label>
+          <label><input type="checkbox" name="output" value="code"><span>Code</span></label>
+          <label><input type="checkbox" name="output" value="image"><span>Images</span></label>
+          <label><input type="checkbox" name="output" value="video"><span>Video</span></label>
+          <label><input type="checkbox" name="output" value="3d"><span>3D Models</span></label>
+          <label><input type="checkbox" name="output" value="data"><span>Data / Analysis</span></label>
+          <label><input type="checkbox" name="output" value="research"><span>Research / Writing</span></label>
+          <label><input type="checkbox" name="output" value="music"><span>Music / Audio</span></label>
+          <label><input type="checkbox" name="output" value="other"><span>Other</span></label>
         </div>
       </div>
     </div>
@@ -693,9 +726,8 @@
       <p class="form-section-desc">Choose the option that feels right. No judgement.</p>
 
       <div class="radio-pills email-choice">
-        <label><input type="radio" name="email-choice" value="privacy" onchange="toggleEmailField()"><span>I value my privacy and won't provide an email</span></label>
-        <label><input type="radio" name="email-choice" value="ashamed" onchange="toggleEmailField()"><span>I'm ashamed of my AI usage so won't provide one</span></label>
-        <label><input type="radio" name="email-choice" value="willing" onchange="toggleEmailField()"><span>I believe AI should be used correctly and I'll share my email</span></label>
+        <label><input type="radio" name="email-choice" value="privacy" onchange="toggleEmailField()"><span>I'd rather not share an email</span></label>
+        <label><input type="radio" name="email-choice" value="willing" onchange="toggleEmailField()"><span>I'm happy to share my email</span></label>
       </div>
 
       <div class="field" id="email-field" style="display:none; margin-top: 16px;">
@@ -709,8 +741,8 @@
 
     <!-- Submit -->
     <div class="submit-area">
-      <button type="submit" class="submit-btn">Apply for your AI Licence</button>
-      <p class="submit-note">This data will not be sold or shared. It exists solely to issue you a certificate that signals you are a responsible user of AI tools. If you abuse your licence, it may be revoked or your outputs watermarked.</p>
+      <button type="submit" class="submit-btn">Submit Census</button>
+      <p class="submit-note">This data will not be sold or shared. It exists solely to help us understand how AI is being used and whether that usage is responsible.</p>
     </div>
 
     </form>
@@ -718,8 +750,21 @@
   </main>
 
   <footer>
-    <p>Based in the EU. This is not a legal document. It's a census and a conversation about responsible AI use.</p>
-    <p style="margin-top: 8px;"><a href="mailto:hello@ai-census.org" style="color: var(--text-muted); text-decoration: none; border-bottom: 1px solid var(--border);">hello@ai-census.org</a></p>
+    <div style="max-width: 720px; margin: 0 auto; padding: 0 24px;">
+      <details style="margin-bottom: 1rem; text-align: left;">
+        <summary style="cursor: pointer; font-weight: 600; font-size: 0.75rem; color: var(--text-muted);">Privacy notice</summary>
+        <div style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-muted); line-height: 1.7; max-width: 560px;">
+          <p><strong>Data controller:</strong> AI Census project, based in the EU. Contact: <a href="mailto:hello@ai-census.org" style="color: var(--text-muted);">hello@ai-census.org</a></p>
+          <p style="margin-top: 0.5rem;"><strong>Lawful basis:</strong> Consent. By submitting this form you consent to us processing the data you provide for the purpose of understanding AI usage patterns.</p>
+          <p style="margin-top: 0.5rem;"><strong>What we collect:</strong> Name, country, role, industry, AI usage details, and optionally your email, GitHub, and LinkedIn. We do not use cookies or tracking.</p>
+          <p style="margin-top: 0.5rem;"><strong>Storage:</strong> Form submissions are processed by Netlify (US-based). Their data processing agreement is in place.</p>
+          <p style="margin-top: 0.5rem;"><strong>Retention:</strong> Data is retained for as long as the census is active. You can request deletion at any time.</p>
+          <p style="margin-top: 0.5rem;"><strong>Your rights:</strong> You can request access to, correction of, or deletion of your data by emailing <a href="mailto:hello@ai-census.org" style="color: var(--text-muted);">hello@ai-census.org</a>. You have the right to withdraw consent and lodge a complaint with your local data protection authority.</p>
+        </div>
+      </details>
+      <p>Based in the EU. This is not a legal document. It's a census and a conversation about responsible AI use.</p>
+      <p style="margin-top: 0.5rem;"><a href="mailto:hello@ai-census.org" style="color: var(--text-muted); text-decoration: none; border-bottom: 1px solid var(--border);">hello@ai-census.org</a></p>
+    </div>
   </footer>
 
   <script>
