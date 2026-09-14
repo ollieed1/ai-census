@@ -116,6 +116,7 @@ Eventually we want to: show a submission counter after 1,000 responses, generate
 - [ ] Build contact.html from Paper design
 - [ ] Email Netlify for signed DPA copy
 - [ ] Consider Netlify Analytics ($9/mo) for visitor counts
+- [ ] Migrate to Supabase when hitting Netlify Forms limit (100/mo free, 1K/mo Pro). EU Frankfurt region. Service role key as Netlify env var
 - [ ] Unique census ID system (future -- for repeat user tracking)
 - [ ] Certificate/licence generation (future)
 - [ ] Anonymous report page (/report) -- aggregate stats only, no individual data. Shows breakdowns by role, industry, country, LLM, output type, frequency, and reflection answers. No names, emails, or URLs ever shown. Future: paywall via Stripe for detailed reports on AI usage patterns across industries and countries
