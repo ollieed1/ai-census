@@ -651,7 +651,7 @@
       <div class="field-row">
         <div class="field">
           <label for="name">What should we call you?</label>
-          <input type="text" id="name" name="name" placeholder="Enter your name">
+          <input type="text" id="name" name="name" placeholder="Your name">
         </div>
         <div class="field">
           <label for="nationality">Country</label>
@@ -709,7 +709,7 @@
         <div class="field">
           <label for="role">I am a</label>
           <select id="role" name="role" onchange="toggleCompanyFields()">
-            <option value="" disabled selected>Select one</option>
+            <option value="" disabled selected>Select role</option>
             <option value="student">Student</option>
             <option value="personal">Personal use</option>
             <option value="company">Company / Organisation</option>
@@ -740,7 +740,7 @@
           <div class="field">
             <label for="company-size">Company size</label>
             <select id="company-size" name="company-size">
-              <option value="" disabled selected>Number of employees</option>
+              <option value="" disabled selected>Select size</option>
               <option value="1-10">1-10</option>
               <option value="11-50">11-50</option>
               <option value="51-200">51-200</option>
@@ -752,7 +752,7 @@
           <div class="field">
             <label for="company-ai-usage">How many use AI at work?</label>
             <select id="company-ai-usage" name="company-ai-usage">
-              <option value="" disabled selected>Estimate</option>
+              <option value="" disabled selected>Select estimate</option>
               <option value="just-me">Just me</option>
               <option value="a-few">A few people</option>
               <option value="most">Most of the team</option>
@@ -767,7 +767,7 @@
         <div class="field">
           <label for="llm">Which LLM do you use?</label>
           <select id="llm" name="llm" onchange="toggleOtherLlm()">
-            <option value="" disabled selected>Select one</option>
+            <option value="" disabled selected>Select LLM</option>
             <option value="chatgpt">ChatGPT (OpenAI)</option>
             <option value="claude">Claude (Anthropic)</option>
             <option value="gemini">Gemini (Google)</option>
@@ -780,7 +780,7 @@
             <option value="other">Other</option>
           </select>
           <div id="other-llm-field" class="field" style="display:none; margin-top: 0.5rem; margin-bottom: 0;">
-            <input type="text" name="llm-other" placeholder="Which LLM?">
+            <input type="text" name="llm-other" placeholder="Enter LLM name">
           </div>
         </div>
         <div class="field">
@@ -835,7 +835,7 @@
           </label>
         </div>
         <div id="other-output-field" class="field" style="display:none; margin-top: 0.75rem;">
-          <input type="text" id="other-output" name="output-other" placeholder="What do you create?">
+          <input type="text" id="other-output" name="output-other" placeholder="Enter output type">
         </div>
       </fieldset>
 
@@ -863,7 +863,7 @@
 
       <div class="field" style="margin-bottom: 0.75rem;">
         <label for="email">Your email <span class="optional">(optional)</span></label>
-        <input type="email" id="email" name="email" placeholder="your@email.com">
+        <input type="email" id="email" name="email" placeholder="Enter your email">
       </div>
 
       <div class="email-tiles" style="margin-bottom: 1.25rem;">
