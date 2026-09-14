@@ -285,28 +285,48 @@
       .email-choice label { text-align: left; }
     }
 
-    /* Checkbox group */
+    /* Output icon cards */
     .check-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 4px;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
     }
 
     .check-group label {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8125rem;
-      font-weight: 400;
+      justify-content: center;
+      gap: 0.625rem;
+      width: 7rem;
+      height: 6rem;
+      font-size: 0.75rem;
+      font-weight: 500;
       color: var(--text-muted);
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 0.5rem 0.875rem;
+      border-radius: 0.75rem;
       cursor: pointer;
       transition: all 0.15s;
       user-select: none;
+    }
+
+    .check-group label svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+
+    .check-group label svg path,
+    .check-group label svg rect,
+    .check-group label svg circle {
+      stroke: var(--text-muted);
+      transition: stroke 0.15s;
+    }
+
+    .check-group label:hover {
+      border-color: var(--border-focus);
+      color: var(--text);
     }
 
     .check-group label:focus-within {
@@ -326,14 +346,17 @@
       height: 0;
     }
 
-    .check-group input[type="checkbox"]:checked + span {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
     .check-group label:has(input:checked) {
       border-color: var(--accent);
+      border-width: 1.5px;
       background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .check-group label:has(input:checked) svg path,
+    .check-group label:has(input:checked) svg rect,
+    .check-group label:has(input:checked) svg circle {
+      stroke: var(--accent);
     }
 
     /* Radio pills */
@@ -615,16 +638,43 @@
       </div>
 
       <div class="field">
-        <label>What do you mainly create with AI?</label>
+        <label style="margin-bottom: 0.5rem;">What do you mainly create with AI?</label>
         <div class="check-group">
-          <label><input type="checkbox" name="output" value="code"><span>Code</span></label>
-          <label><input type="checkbox" name="output" value="image"><span>Images</span></label>
-          <label><input type="checkbox" name="output" value="video"><span>Video</span></label>
-          <label><input type="checkbox" name="output" value="3d"><span>3D Models</span></label>
-          <label><input type="checkbox" name="output" value="data"><span>Data / Analysis</span></label>
-          <label><input type="checkbox" name="output" value="research"><span>Research / Writing</span></label>
-          <label><input type="checkbox" name="output" value="music"><span>Music / Audio</span></label>
-          <label><input type="checkbox" name="output" value="other"><span>Other</span></label>
+          <label>
+            <input type="checkbox" name="output" value="code">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M7 8h2M7 12h6M7 16h4M7 20h8" stroke-width="1.5" stroke-linecap="round"/><path d="M17 12l2 2-2 2M21 12l-2 2 2 2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Code</span>
+          </label>
+          <label>
+            <input type="checkbox" name="output" value="image">
+            <svg viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="3" stroke-width="1.5"/><circle cx="10" cy="11" r="2.5" stroke-width="1.5"/><path d="M4 19l5-4 3 3 4-5 8 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Image</span>
+          </label>
+          <label>
+            <input type="checkbox" name="output" value="video">
+            <svg viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="20" height="16" rx="3" stroke-width="1.5"/><path d="M11 12l6 3-6 3V12z" fill="currentColor" stroke="none"/></svg>
+            <span>Video</span>
+          </label>
+          <label>
+            <input type="checkbox" name="output" value="3d">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M14 4l-4 8h8l-4 8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 18l-2 6M20 18l2 6M10 24h8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>3D Model</span>
+          </label>
+          <label>
+            <input type="checkbox" name="output" value="data">
+            <svg viewBox="0 0 28 28" fill="none"><path d="M4 20V8M8 20V12M12 20V6M16 20V14M20 20V10M24 20V16" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>Data</span>
+          </label>
+          <label>
+            <input type="checkbox" name="output" value="research">
+            <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="12" r="8" stroke-width="1.5"/><path d="M20 18l4 4" stroke-width="1.5" stroke-linecap="round"/><path d="M11 12h6M14 9v6" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Research</span>
+          </label>
+          <label>
+            <input type="checkbox" name="output" value="other">
+            <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="9" stroke-width="1.5"/><path d="M11 14h6M14 11v6" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Other</span>
+          </label>
         </div>
       </div>
 
