@@ -474,74 +474,25 @@
     <!-- Hero -->
     <div class="hero">
       <h1>Tell us how you use <span>AI</span></h1>
-      <p>AI consumes real natural resources. This is an informal census to understand how people are using AI, and whether that usage is worth the energy it costs.</p>
+      <p>This is not a marketing form. We are building an honest picture of how AI is being used right now. Your answers help us understand whether these tools are serving humanity well.</p>
     </div>
 
-    <!-- Manifesto (accordion) -->
-    <details class="manifesto">
-      <summary style="cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;">
-        <h2 style="margin: 0;">What we believe</h2>
-        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" style="transition: transform 0.2s; flex-shrink: 0;"><path d="M6 9l6 6 6-6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </summary>
-      <div class="manifesto-grid" style="margin-top: 1.25rem;">
-        <div class="principle">
-          <div class="principle-icon good">&#10003;</div>
-          <p><strong>Coding to build something useful</strong> -- using AI to help bring an idea to life that serves others is a fair use of the resource.</p>
-        </div>
-        <div class="principle">
-          <div class="principle-icon good">&#10003;</div>
-          <p><strong>Research and science</strong> -- accelerating discovery, analysing data, exploring problems that benefit humanity.</p>
-        </div>
-        <div class="principle">
-          <div class="principle-icon good">&#10003;</div>
-          <p><strong>Students learning</strong> -- AI as a tutor, not a shortcut. Understanding what it gives you, not just copying it.</p>
-        </div>
-        <div class="principle">
-          <div class="principle-icon good">&#10003;</div>
-          <p><strong>Creative exploration</strong> -- AI art for personal creativity and experimentation, not for selling as your own work.</p>
-        </div>
-        <div class="principle">
-          <div class="principle-icon caution">!</div>
-          <p><strong>Business use needs scrutiny</strong> -- write your business plan yourself. AI should augment your thinking, not replace it.</p>
-        </div>
-        <div class="principle">
-          <div class="principle-icon bad">&#10005;</div>
-          <p><strong>AI-generated social media content</strong> -- flooding feeds with synthetic content wastes energy and erodes trust.</p>
-        </div>
-        <div class="principle">
-          <div class="principle-icon bad">&#10005;</div>
-          <p><strong>Generating harmful imagery</strong> -- this is never acceptable. Full stop.</p>
-        </div>
-        <div class="principle">
-          <div class="principle-icon bad">&#10005;</div>
-          <p><strong>Fake news and narrative-pushing</strong> -- AI-generated journalism or media created to push an agenda is a misuse of the resource.</p>
-        </div>
-        <div class="principle">
-          <div class="principle-icon bad">&#10005;</div>
-          <p><strong>Selling AI output as human-made</strong> -- if AI made it, say so. Don't profit from a lie.</p>
-        </div>
-      </div>
-    </details>
+    <div class="divider" style="margin-top: 0;"></div>
 
     <!-- Form -->
     <form name="ai-census" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="ai-census">
       <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
 
-    <!-- Form: About You -->
-    <div class="form-section">
-      <h2 class="form-section-title">About you</h2>
-      <p class="form-section-desc">Tell us who you are. This data will never be sold or used for marketing.</p>
-
       <div class="field-row">
         <div class="field">
-          <label for="name">Full name</label>
-          <input type="text" id="name" name="name" placeholder="Jane Smith">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name">
         </div>
         <div class="field">
           <label for="nationality">Country</label>
           <select id="nationality" name="country">
-            <option value="" disabled selected>Select your country</option>
+            <option value="" disabled selected>Select country</option>
             <option value="AT">Austria</option>
             <option value="BE">Belgium</option>
             <option value="BR">Brazil</option>
@@ -590,12 +541,30 @@
 
       <div class="field-row">
         <div class="field">
-          <label for="role">Are you a...</label>
+          <label for="role">I am a</label>
           <select id="role" name="role" onchange="toggleCompanyFields()">
             <option value="" disabled selected>Select one</option>
             <option value="student">Student</option>
             <option value="personal">Personal use</option>
             <option value="company">Company / Organisation</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="industry">Industry</label>
+          <select id="industry" name="industry">
+            <option value="" disabled selected>Select industry</option>
+            <option value="design">Design</option>
+            <option value="engineering">Engineering</option>
+            <option value="finance">Finance</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="education">Education</option>
+            <option value="research">Research</option>
+            <option value="science">Science</option>
+            <option value="media">Media / Journalism</option>
+            <option value="law">Law</option>
+            <option value="government">Government</option>
+            <option value="nonprofit">Non-profit</option>
+            <option value="other">Other</option>
           </select>
         </div>
       </div>
@@ -628,62 +597,25 @@
         </div>
       </div>
 
-      <div class="field">
-        <label for="industry">Industry</label>
-        <select id="industry" name="industry">
-          <option value="" disabled selected>Select your industry</option>
-          <option value="design">Design</option>
-          <option value="engineering">Engineering</option>
-          <option value="finance">Finance</option>
-          <option value="healthcare">Healthcare</option>
-          <option value="education">Education</option>
-          <option value="research">Research</option>
-          <option value="science">Science</option>
-          <option value="media">Media / Journalism</option>
-          <option value="law">Law</option>
-          <option value="government">Government</option>
-          <option value="nonprofit">Non-profit</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Form: Your AI Usage -->
-    <div class="form-section">
-      <h2 class="form-section-title">Your AI usage</h2>
-      <p class="form-section-desc">Help us understand what tools you use and how.</p>
-
-      <div class="field">
-        <label for="llm">Which LLM do you primarily use?</label>
-        <select id="llm" name="llm">
-          <option value="" disabled selected>Select one</option>
-          <option value="chatgpt">ChatGPT (OpenAI)</option>
-          <option value="claude">Claude (Anthropic)</option>
-          <option value="gemini">Gemini (Google)</option>
-          <option value="copilot">Copilot (Microsoft)</option>
-          <option value="llama">Llama (Meta)</option>
-          <option value="midjourney">Midjourney</option>
-          <option value="stable-diffusion">Stable Diffusion</option>
-          <option value="local">Local / self-hosted model</option>
-          <option value="multiple">Multiple</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>How often do you use AI?</label>
-        <div class="radio-pills">
-          <label><input type="radio" name="frequency" value="daily"><span>Daily</span></label>
-          <label><input type="radio" name="frequency" value="weekly"><span>A few times a week</span></label>
-          <label><input type="radio" name="frequency" value="monthly"><span>A few times a month</span></label>
-          <label><input type="radio" name="frequency" value="rarely"><span>Rarely</span></label>
+      <div class="field-row">
+        <div class="field">
+          <label for="llm">Which LLM do you use?</label>
+          <input type="text" id="llm" name="llm" placeholder="e.g. Claude, GPT, Gemini...">
+        </div>
+        <div class="field">
+          <label for="frequency">How often do you use AI?</label>
+          <select id="frequency" name="frequency">
+            <option value="" disabled selected>Select frequency</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">A few times a week</option>
+            <option value="monthly">A few times a month</option>
+            <option value="rarely">Rarely</option>
+          </select>
         </div>
       </div>
 
       <div class="field">
-        <label>What is your main output?</label>
+        <label>What do you mainly create with AI?</label>
         <div class="check-group">
           <label><input type="checkbox" name="output" value="code"><span>Code</span></label>
           <label><input type="checkbox" name="output" value="image"><span>Images</span></label>
@@ -695,70 +627,46 @@
           <label><input type="checkbox" name="output" value="other"><span>Other</span></label>
         </div>
       </div>
-    </div>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <!-- Reflection -->
-    <div class="form-section">
-      <h2 class="form-section-title">Reflection</h2>
-      <p class="form-section-desc">These aren't trick questions. Just be honest.</p>
+      <p style="font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 1rem;">The important questions</p>
 
       <div class="reflection">
-        <p>Do you feel that what you create with AI is beneficial relative to the energy it consumes?</p>
+        <p>Do you feel that what you create is worth the energy it consumes?</p>
         <div class="radio-pills">
           <label><input type="radio" name="beneficial" value="yes"><span>Yes, absolutely</span></label>
-          <label><input type="radio" name="beneficial" value="mostly"><span>Mostly, yes</span></label>
-          <label><input type="radio" name="beneficial" value="unsure"><span>I'm not sure</span></label>
+          <label><input type="radio" name="beneficial" value="sometimes"><span>Sometimes</span></label>
+          <label><input type="radio" name="beneficial" value="unsure"><span>Not sure</span></label>
           <label><input type="radio" name="beneficial" value="no"><span>Probably not</span></label>
         </div>
       </div>
 
       <div class="reflection">
-        <p>Is what you do with AI for the greater good of humanity?</p>
+        <p>Is what you do for the greater good of humanity?</p>
         <div class="radio-pills">
-          <label><input type="radio" name="greater-good" value="yes"><span>Yes</span></label>
-          <label><input type="radio" name="greater-good" value="i-think-so"><span>I think so</span></label>
-          <label><input type="radio" name="greater-good" value="its-personal"><span>It's mostly personal</span></label>
-          <label><input type="radio" name="greater-good" value="no"><span>No, it's just convenient</span></label>
+          <label><input type="radio" name="greater-good" value="yes"><span>Yes, directly</span></label>
+          <label><input type="radio" name="greater-good" value="indirectly"><span>Indirectly</span></label>
+          <label><input type="radio" name="greater-good" value="not-sure"><span>I'm not sure yet</span></label>
+          <label><input type="radio" name="greater-good" value="no"><span>Honestly, no</span></label>
         </div>
       </div>
 
-      <div class="field">
-        <label for="describe">Briefly describe what you use AI for</label>
-        <textarea id="describe" name="describe" placeholder="e.g. I'm a design student using AI to prototype UI ideas faster. I always rework the output by hand."></textarea>
-      </div>
-    </div>
+      <div class="divider"></div>
 
-    <div class="divider"></div>
-
-    <!-- Email -->
-    <div class="form-section">
-      <h2 class="form-section-title">Your email</h2>
-      <p class="form-section-desc">So we can follow up if needed. Entirely optional.</p>
-
-      <div class="field">
-        <label for="email">Email address <span class="optional">*optional</span></label>
+      <div class="field" style="margin-bottom: 0.75rem;">
+        <label for="email">Your email <span class="optional">(optional)</span></label>
         <input type="email" id="email" name="email" placeholder="your@email.com">
       </div>
 
-      <div class="field" style="margin-bottom: 0;">
-        <label style="margin-bottom: 0.5rem;">Sharing preference</label>
-        <div class="radio-pills email-choice">
-          <label><input type="radio" name="email-choice" value="privacy"><span>I'd rather not share an email</span></label>
-          <label><input type="radio" name="email-choice" value="willing"><span>I'm happy to share my email</span></label>
-        </div>
+      <div style="background: var(--surface-2); border-radius: var(--radius); padding: 1rem 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1.5rem;">
+        <span style="font-size: 0.8125rem; color: var(--green); line-height: 1.7;">We will never sell or use this data for marketing. This census exists for one reason only: to understand whether AI is being used responsibly. Not for waste. Not for harm. For the future.</span>
       </div>
 
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Submit -->
-    <div class="submit-area">
-      <button type="submit" class="submit-btn">Submit Census</button>
-      <p class="submit-note">This data will not be sold or shared. It exists solely to help us understand how AI is being used and whether that usage is responsible.</p>
-    </div>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.8125rem; color: var(--text-muted);">All fields are optional. Be as honest as you like.</span>
+        <button type="submit" class="submit-btn">Submit Census &rarr;</button>
+      </div>
 
     </form>
 
