@@ -124,3 +124,46 @@ Eventually we want to: show a submission counter after 1,000 responses, generate
 ## Data promise
 
 This data will not be sold or shared. It exists solely to understand how AI is being used and whether that usage is responsible. Not for waste. Not for harm. For the future.
+
+---
+
+## Session log (2026-09-14)
+
+Built the entire AI Census project from scratch in one session. Here's what happened:
+
+**Design in Paper:**
+- Designed a clean white/green alpine-themed census form with custom SVG icon set
+- Built 7 artboards: empty form, filled state, error state, confirmation, 404, contact, browser mockup
+- Created a custom icon library (20+ icons) for every form element: inputs, output cards, reflection questions, email tiles
+- Consistent styling system: inset shadows, 0.5px #999 borders, #FAFAFA surfaces, 10px radius
+
+**Code:**
+- Single index.html with all CSS inline, no build step
+- Netlify Forms for data collection with honeypot spam protection
+- Netlify Function for submission counter (shows after 1,000)
+- All font sizes in rem for accessibility
+- Keyboard navigation with focus-visible outlines
+- URL validation on GitHub/LinkedIn fields with honest error messages
+- Conditional fields: Company reveals size/AI adoption, Other reveals text input, LLM Other reveals text input
+- Mobile responsive (stacks to single column below 520px)
+- Confirmation page (thanks.html)
+
+**Legal/GDPR:**
+- Removed unenforceable claims (watermarking, revoking, resource grants)
+- Added collapsible GDPR privacy notice in footer
+- Softened email options (removed "ashamed" framing)
+- Changed nationality free text to country dropdown (avoids ethnic origin proxy)
+- Custom domain added to Netlify (ai-census.org, DNS pending at Namesco)
+
+**Design decisions:**
+- White background, not dark mode -- clean and trustworthy
+- Deep evergreen (#1B4332) as primary accent -- nature/responsibility metaphor
+- Icon cards for output types instead of plain checkboxes -- more engaging, easier to scan
+- Radio card tiles for email preference -- gives weight to the choice
+- Manifesto collapsed into accordion -- form is the hero, beliefs are optional reading
+- "What should we call you?" instead of "Full name" -- warmer, less formal
+- "It's better to be honest, but you don't have to lie" as URL validation message -- on brand
+- No analytics scripts, no cookies -- walks the talk on privacy
+
+**What's cooking:**
+This isn't just a form. It's the start of something bigger -- an honest conversation about whether AI is serving humanity well. The data we collect could become the basis for understanding real AI usage patterns across industries and countries. The certificate/licence concept gives people a reason to participate and a signal they can carry. The design is intentionally minimal because the content should speak for itself. Every field is optional because trust is earned, not demanded.
