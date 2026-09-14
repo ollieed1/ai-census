@@ -462,6 +462,11 @@
       </div>
     </div>
 
+    <!-- Form -->
+    <form name="ai-census" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="ai-census">
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+
     <!-- Form: About You -->
     <div class="form-section">
       <h2 class="form-section-title">About you</h2>
@@ -470,22 +475,18 @@
       <div class="field-row">
         <div class="field">
           <label for="name">Full name</label>
-          <input type="text" id="name" placeholder="Jane Smith">
+          <input type="text" id="name" name="name" placeholder="Jane Smith">
         </div>
         <div class="field">
-          <label for="email">Email <span class="optional">(optional)</span></label>
-          <input type="email" id="email" placeholder="jane@example.com">
+          <label for="nationality">Nationality</label>
+          <input type="text" id="nationality" name="nationality" placeholder="e.g. British, French, Nigerian">
         </div>
       </div>
 
       <div class="field-row">
         <div class="field">
-          <label for="nationality">Nationality</label>
-          <input type="text" id="nationality" placeholder="e.g. British, French, Nigerian">
-        </div>
-        <div class="field">
           <label for="role">Are you a...</label>
-          <select id="role">
+          <select id="role" name="role">
             <option value="" disabled selected>Select one</option>
             <option value="student">Student</option>
             <option value="professional">Professional</option>
@@ -496,9 +497,19 @@
         </div>
       </div>
 
-      <div class="field">
-        <label for="industry">Industry</label>
-        <select id="industry">
+      <div class="field-row">
+        <div class="field">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="" disabled selected>Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="prefer-not-to-say">Prefer not to say</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="industry">Industry</label>
+          <select id="industry" name="industry">
           <option value="" disabled selected>Select your industry</option>
           <option value="design">Design</option>
           <option value="engineering">Engineering</option>
@@ -513,6 +524,7 @@
           <option value="nonprofit">Non-profit</option>
           <option value="other">Other</option>
         </select>
+        </div>
       </div>
     </div>
 
@@ -525,7 +537,7 @@
 
       <div class="field">
         <label for="llm">Which LLM do you primarily use?</label>
-        <select id="llm">
+        <select id="llm" name="llm">
           <option value="" disabled selected>Select one</option>
           <option value="chatgpt">ChatGPT (OpenAI)</option>
           <option value="claude">Claude (Anthropic)</option>
@@ -553,13 +565,14 @@
       <div class="field">
         <label>What is your main output?</label>
         <div class="check-group">
-          <label><input type="checkbox" value="code"><span>Code</span></label>
-          <label><input type="checkbox" value="image"><span>Images</span></label>
-          <label><input type="checkbox" value="video"><span>Video</span></label>
-          <label><input type="checkbox" value="3d"><span>3D Models</span></label>
-          <label><input type="checkbox" value="data"><span>Data / Analysis</span></label>
-          <label><input type="checkbox" value="research"><span>Research / Writing</span></label>
-          <label><input type="checkbox" value="music"><span>Music / Audio</span></label>
+          <label><input type="checkbox" name="output[]" value="code"><span>Code</span></label>
+          <label><input type="checkbox" name="output[]" value="image"><span>Images</span></label>
+          <label><input type="checkbox" name="output[]" value="video"><span>Video</span></label>
+          <label><input type="checkbox" name="output[]" value="3d"><span>3D Models</span></label>
+          <label><input type="checkbox" name="output[]" value="data"><span>Data / Analysis</span></label>
+          <label><input type="checkbox" name="output[]" value="research"><span>Research / Writing</span></label>
+          <label><input type="checkbox" name="output[]" value="music"><span>Music / Audio</span></label>
+          <label><input type="checkbox" name="output[]" value="other"><span>Other</span></label>
         </div>
       </div>
     </div>
@@ -593,7 +606,26 @@
 
       <div class="field">
         <label for="describe">Briefly describe what you use AI for</label>
-        <textarea id="describe" placeholder="e.g. I'm a design student using AI to prototype UI ideas faster. I always rework the output by hand."></textarea>
+        <textarea id="describe" name="describe" placeholder="e.g. I'm a design student using AI to prototype UI ideas faster. I always rework the output by hand."></textarea>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Email choice -->
+    <div class="form-section">
+      <h2 class="form-section-title">Your email</h2>
+      <p class="form-section-desc">Choose the option that feels right. No judgement.</p>
+
+      <div class="radio-pills email-choice">
+        <label><input type="radio" name="email-choice" value="privacy" onchange="toggleEmailField()"><span>I value my privacy and won't provide an email</span></label>
+        <label><input type="radio" name="email-choice" value="ashamed" onchange="toggleEmailField()"><span>I'm ashamed of my AI usage so won't provide one</span></label>
+        <label><input type="radio" name="email-choice" value="willing" onchange="toggleEmailField()"><span>I believe AI should be used correctly and I'll share my email</span></label>
+      </div>
+
+      <div class="field" id="email-field" style="display:none; margin-top: 16px;">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com">
       </div>
     </div>
 
@@ -601,9 +633,11 @@
 
     <!-- Submit -->
     <div class="submit-area">
-      <button class="submit-btn" onclick="handleSubmit()">Apply for your AI Licence</button>
+      <button type="submit" class="submit-btn">Apply for your AI Licence</button>
       <p class="submit-note">This data will not be sold or shared. It exists solely to issue you a certificate that signals you are a responsible user of AI tools. If you abuse your licence, it may be revoked or your outputs watermarked.</p>
     </div>
+
+    </form>
 
   </main>
 
@@ -612,14 +646,10 @@
   </footer>
 
   <script>
-    function handleSubmit() {
-      const name = document.getElementById('name').value.trim();
-      if (!name) {
-        alert('Please enter your name to apply.');
-        return;
-      }
-      // Placeholder -- no backend yet
-      alert(`Thanks, ${name}. Your application has been received. This is a prototype -- licence generation coming soon.`);
+    function toggleEmailField() {
+      const choice = document.querySelector('input[name="email-choice"]:checked');
+      const emailField = document.getElementById('email-field');
+      emailField.style.display = choice && choice.value === 'willing' ? 'block' : 'none';
     }
   </script>
 
