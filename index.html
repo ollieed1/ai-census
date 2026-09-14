@@ -113,73 +113,6 @@
       line-height: 1.7;
     }
 
-    /* Manifesto */
-    .manifesto {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      margin-bottom: 48px;
-    }
-
-    .manifesto summary::-webkit-details-marker { display: none; }
-
-    .manifesto[open] .chevron { transform: rotate(180deg); }
-
-    .manifesto h2 {
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      margin-bottom: 0;
-    }
-
-    .manifesto-grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .principle {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-
-    .principle-icon {
-      width: 1.75rem;
-      height: 1.75rem;
-      border-radius: 0.5rem;
-      display: grid;
-      place-items: center;
-      font-size: 0.875rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .principle-icon.good {
-      background: var(--green-soft);
-      color: var(--green);
-    }
-
-    .principle-icon.bad {
-      background: var(--red-soft);
-      color: var(--red);
-    }
-
-    .principle-icon.caution {
-      background: var(--amber-soft);
-      color: var(--amber);
-    }
-
-    .principle p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .principle strong {
-      color: var(--text);
-    }
 
     /* Form */
     .form-section {
@@ -289,12 +222,8 @@
     @media (max-width: 520px) {
       .field-row { grid-template-columns: 1fr; }
       .hero h1 { font-size: 1.75rem; }
-      .manifesto { padding: 20px; }
-      .reflection { padding: 20px; }
       .radio-cards { flex-direction: column; }
       .radio-cards label { text-align: center; }
-      .email-choice { flex-direction: column; }
-      .email-choice label { text-align: left; }
     }
 
     .field-error {
@@ -449,119 +378,6 @@
       color: var(--accent);
     }
 
-    /* Email radio tiles */
-    .email-tiles {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .email-tiles label {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      border: 1px solid #767676;
-      border-radius: 0.75rem;
-      background: var(--surface);
-      box-shadow: #00000014 0px -0.5px 4px -1px inset, #0000000A 0px -0.5px 4px;
-      cursor: pointer;
-      transition: all 0.15s;
-      user-select: none;
-    }
-
-    .email-tiles label:hover {
-      border-color: var(--border-focus);
-    }
-
-    .email-tiles label:focus-within {
-      border-color: var(--border-focus);
-      box-shadow: 0 0 0 3px var(--accent-soft);
-    }
-
-    .email-tiles input[type="radio"] {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip-path: inset(50%);
-      white-space: nowrap;
-    }
-
-    .email-tiles .radio-dot {
-      width: 1.375rem;
-      height: 1.375rem;
-      border-radius: 50%;
-      border: 1.5px solid #767676;
-      background: #fff;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .email-tiles .radio-dot::after {
-      content: '';
-      width: 0.625rem;
-      height: 0.625rem;
-      border-radius: 50%;
-      background: transparent;
-      transition: background 0.15s;
-    }
-
-    .email-tiles label:has(input:checked) {
-      border-color: var(--accent);
-      border-width: 1.5px;
-      background: var(--accent-soft);
-    }
-
-    .email-tiles label:has(input:checked) .radio-dot {
-      border-color: var(--accent);
-    }
-
-    .email-tiles label:has(input:checked) .radio-dot::after {
-      background: var(--accent);
-    }
-
-    .email-tiles label:has(input:checked) .tile-text {
-      color: var(--accent);
-    }
-
-    .email-tiles label:has(input:checked) svg path,
-    .email-tiles label:has(input:checked) svg rect {
-      stroke: var(--accent);
-    }
-
-    .email-tiles .tile-text {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .email-tiles svg {
-      width: 1.25rem;
-      height: 1.25rem;
-      flex-shrink: 0;
-    }
-
-    /* Reflection questions */
-    .reflection {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      margin-bottom: 20px;
-    }
-
-    .reflection p {
-      font-size: 0.9375rem;
-      font-weight: 600;
-      margin-bottom: 0.875rem;
-      line-height: 1.5;
-    }
-
     /* Divider */
     .divider {
       height: 1px;
@@ -695,19 +511,19 @@
       <div class="field-row">
         <div class="field">
           <label for="github">GitHub <span class="optional">(optional)</span></label>
-          <input type="url" id="github" name="github" placeholder="https://github.com/username" pattern="https?://(www\.)?github\.com/.+" title="Please enter a valid GitHub URL" aria-describedby="github-error">
+          <input type="url" id="github" name="github" placeholder="Enter GitHub URL" pattern="https?://(www\.)?github\.com/.+" title="Please enter a valid GitHub URL" aria-describedby="github-error">
           <span class="field-error" id="github-error" role="alert"></span>
         </div>
         <div class="field">
           <label for="linkedin">LinkedIn <span class="optional">(optional)</span></label>
-          <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username" pattern="https?://(www\.)?linkedin\.com/(in|company)/.+" title="Please enter a valid LinkedIn URL" aria-describedby="linkedin-error">
+          <input type="url" id="linkedin" name="linkedin" placeholder="Enter LinkedIn URL" pattern="https?://(www\.)?linkedin\.com/(in|company)/.+" title="Please enter a valid LinkedIn URL" aria-describedby="linkedin-error">
           <span class="field-error" id="linkedin-error" role="alert"></span>
         </div>
       </div>
 
       <div class="field-row">
         <div class="field">
-          <label for="role">I am a</label>
+          <label for="role">Role</label>
           <select id="role" name="role" onchange="toggleCompanyFields()">
             <option value="" disabled selected>Select role</option>
             <option value="student">Student</option>
@@ -861,24 +677,9 @@
 
       <div class="divider"></div>
 
-      <div class="field" style="margin-bottom: 0.75rem;">
+      <div class="field">
         <label for="email">Your email <span class="optional">(optional)</span></label>
         <input type="email" id="email" name="email" placeholder="Enter your email">
-      </div>
-
-      <div class="email-tiles" style="margin-bottom: 1.25rem;">
-        <label>
-          <input type="radio" name="email-choice" value="privacy">
-          <span class="radio-dot"></span>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span class="tile-text">I'd rather not share an email</span>
-        </label>
-        <label>
-          <input type="radio" name="email-choice" value="willing">
-          <span class="radio-dot"></span>
-          <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M22 7l-10 6L2 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span class="tile-text">I'm happy to share my email</span>
-        </label>
       </div>
 
       <div style="background: var(--surface-2); border-radius: var(--radius); padding: 1rem 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1.5rem;">
