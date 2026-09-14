@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Licence - Tokens for Good</title>
+  <title>AI Census - Tell us how you use AI</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -122,12 +122,16 @@
       margin-bottom: 48px;
     }
 
+    .manifesto summary::-webkit-details-marker { display: none; }
+
+    .manifesto[open] .chevron { transform: rotate(180deg); }
+
     .manifesto h2 {
       font-size: 0.875rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
-      margin-bottom: 1.25rem;
+      margin-bottom: 0;
     }
 
     .manifesto-grid {
@@ -454,7 +458,7 @@
     <div class="header-inner">
       <div class="logo">
         <div class="logo-mark">AI</div>
-        ai-licence.org
+        ai-census.org
       </div>
       <span class="version-tag">Census v0.1</span>
     </div>
@@ -462,16 +466,24 @@
 
   <main>
 
+    <!-- Submission counter (hidden until 1,000) -->
+    <div id="census-counter" style="display:none; margin-bottom: 2rem; padding: 0.75rem 1.25rem; background: var(--accent-soft); border-radius: var(--radius); text-align: center;">
+      <span style="font-size: 0.875rem; color: var(--accent); font-weight: 600;" id="counter-text"></span>
+    </div>
+
     <!-- Hero -->
     <div class="hero">
-      <h1>Tokens for <span>Good</span></h1>
+      <h1>Tell us how you use <span>AI</span></h1>
       <p>AI consumes real natural resources. This is an informal census to understand how people are using AI, and whether that usage is worth the energy it costs.</p>
     </div>
 
-    <!-- Manifesto -->
-    <div class="manifesto">
-      <h2>What we believe</h2>
-      <div class="manifesto-grid">
+    <!-- Manifesto (accordion) -->
+    <details class="manifesto">
+      <summary style="cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;">
+        <h2 style="margin: 0;">What we believe</h2>
+        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" style="transition: transform 0.2s; flex-shrink: 0;"><path d="M6 9l6 6 6-6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="manifesto-grid" style="margin-top: 1.25rem;">
         <div class="principle">
           <div class="principle-icon good">&#10003;</div>
           <p><strong>Coding to build something useful</strong> -- using AI to help bring an idea to life that serves others is a fair use of the resource.</p>
@@ -498,7 +510,7 @@
         </div>
         <div class="principle">
           <div class="principle-icon bad">&#10005;</div>
-          <p><strong>Generating harmful imagery</strong> -- no licence will ever be granted for this. Full stop.</p>
+          <p><strong>Generating harmful imagery</strong> -- this is never acceptable. Full stop.</p>
         </div>
         <div class="principle">
           <div class="principle-icon bad">&#10005;</div>
@@ -509,7 +521,7 @@
           <p><strong>Selling AI output as human-made</strong> -- if AI made it, say so. Don't profit from a lie.</p>
         </div>
       </div>
-    </div>
+    </details>
 
     <!-- Form -->
     <form name="ai-census" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
@@ -768,6 +780,19 @@
   </footer>
 
   <script>
+    fetch('/.netlify/functions/submission-count')
+      .then(r => r.json())
+      .then(data => {
+        if (data.show) {
+          const counter = document.getElementById('census-counter');
+          const text = document.getElementById('counter-text');
+          const rounded = Math.floor(data.count / 100) * 100;
+          text.textContent = rounded.toLocaleString() + '+ people have shared how they use AI';
+          counter.style.display = 'block';
+        }
+      })
+      .catch(() => {});
+
     function toggleCompanyFields() {
       const role = document.getElementById('role').value;
       const companyFields = document.getElementById('company-fields');
