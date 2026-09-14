@@ -118,6 +118,7 @@ Eventually we want to: show a submission counter after 1,000 responses, generate
 - [ ] Consider Netlify Analytics ($9/mo) for visitor counts
 - [ ] Unique census ID system (future -- for repeat user tracking)
 - [ ] Certificate/licence generation (future)
+- [ ] Anonymous report page (/report) -- aggregate stats only, no individual data. Shows breakdowns by role, industry, country, LLM, output type, frequency, and reflection answers. No names, emails, or URLs ever shown. Future: paywall via Stripe for detailed reports on AI usage patterns across industries and countries
 
 ---
 
