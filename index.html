@@ -234,6 +234,12 @@
       transition: border-color 0.15s, box-shadow 0.15s;
     }
 
+    .field input:hover,
+    .field select:hover,
+    .field textarea:hover {
+      border-color: #666666;
+    }
+
     .field input:focus,
     .field select:focus,
     .field textarea:focus {
@@ -299,6 +305,8 @@
 
     .field input:user-invalid {
       border-color: var(--red);
+      box-shadow: #DC262614 0px -0.5px 4px -1px inset, #DC26260A 0px -0.5px 4px;
+      background: var(--red-soft);
     }
 
     /* Output icon cards */
