@@ -504,14 +504,40 @@
       <div class="field-row">
         <div class="field">
           <label for="role">Are you a...</label>
-          <select id="role" name="role">
+          <select id="role" name="role" onchange="toggleCompanyFields()">
             <option value="" disabled selected>Select one</option>
             <option value="student">Student</option>
-            <option value="professional">Professional</option>
-            <option value="researcher">Researcher</option>
-            <option value="hobbyist">Hobbyist</option>
-            <option value="other">Other</option>
+            <option value="personal">Personal use</option>
+            <option value="company">Company / Organisation</option>
           </select>
+        </div>
+      </div>
+
+      <div id="company-fields" style="display:none;">
+        <div class="field-row">
+          <div class="field">
+            <label for="company-size">Company size</label>
+            <select id="company-size" name="company-size">
+              <option value="" disabled selected>Number of employees</option>
+              <option value="1-10">1-10</option>
+              <option value="11-50">11-50</option>
+              <option value="51-200">51-200</option>
+              <option value="201-1000">201-1,000</option>
+              <option value="1001-5000">1,001-5,000</option>
+              <option value="5001+">5,001+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="company-ai-usage">How many use AI at work?</label>
+            <select id="company-ai-usage" name="company-ai-usage">
+              <option value="" disabled selected>Estimate</option>
+              <option value="just-me">Just me</option>
+              <option value="a-few">A few people</option>
+              <option value="most">Most of the team</option>
+              <option value="company-wide">Company-wide</option>
+              <option value="not-sure">Not sure</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -655,6 +681,12 @@
   </footer>
 
   <script>
+    function toggleCompanyFields() {
+      const role = document.getElementById('role').value;
+      const companyFields = document.getElementById('company-fields');
+      companyFields.style.display = role === 'company' ? 'block' : 'none';
+    }
+
     function toggleEmailField() {
       const choice = document.querySelector('input[name="email-choice"]:checked');
       const emailField = document.getElementById('email-field');
