@@ -12,6 +12,18 @@
 
 An informal census to understand how people use AI and whether that usage is responsible. Not marketing, not legal. A conversation about whether AI tools are serving humanity well.
 
+## What we are building
+
+AI Census is a single-page form that asks people to honestly share how they use AI. The goal is to gather real data about AI usage patterns across students, individuals, and companies -- not to sell anything, not to market to anyone, but to build a genuine picture of whether AI is being used responsibly.
+
+The form collects: who you are (name, country, role, industry), how you use AI (which LLM, how often, what you create), and two reflection questions about whether your usage is worth the energy it consumes and whether it serves the greater good. Everything is optional. The tone is honest, direct, and non-judgmental.
+
+The data stays on Netlify. No cookies, no tracking, no analytics scripts. There's a GDPR privacy notice in the footer. The project is based in the EU.
+
+The design is intentionally clean and minimal -- white background, deep evergreen green accent, custom SVG icons for every field and output type. The form should feel like a conversation, not a government survey. Every element has been designed in Paper first, then built to match.
+
+Eventually we want to: show a submission counter after 1,000 responses, generate a certificate/licence for responsible AI users, and build a fuller picture of how AI is actually being used across industries and countries.
+
 ---
 
 ## Pages
