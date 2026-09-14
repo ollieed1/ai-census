@@ -732,19 +732,22 @@
 
     <div class="divider"></div>
 
-    <!-- Email choice -->
+    <!-- Email -->
     <div class="form-section">
       <h2 class="form-section-title">Your email</h2>
-      <p class="form-section-desc">Choose the option that feels right. No judgement.</p>
+      <p class="form-section-desc">So we can follow up if needed. Entirely optional.</p>
 
-      <div class="radio-pills email-choice">
-        <label><input type="radio" name="email-choice" value="privacy" onchange="toggleEmailField()"><span>I'd rather not share an email</span></label>
-        <label><input type="radio" name="email-choice" value="willing" onchange="toggleEmailField()"><span>I'm happy to share my email</span></label>
+      <div class="field">
+        <label for="email">Email address <span class="optional">*optional</span></label>
+        <input type="email" id="email" name="email" placeholder="your@email.com">
       </div>
 
-      <div class="field" id="email-field" style="display:none; margin-top: 16px;">
-        <label for="email">Email address</label>
-        <input type="email" id="email" name="email" placeholder="your@email.com">
+      <div class="field" style="margin-bottom: 0;">
+        <label style="margin-bottom: 0.5rem;">Sharing preference</label>
+        <div class="radio-pills email-choice">
+          <label><input type="radio" name="email-choice" value="privacy"><span>I'd rather not share an email</span></label>
+          <label><input type="radio" name="email-choice" value="willing"><span>I'm happy to share my email</span></label>
+        </div>
       </div>
 
     </div>
@@ -799,11 +802,6 @@
       companyFields.style.display = role === 'company' ? 'block' : 'none';
     }
 
-    function toggleEmailField() {
-      const choice = document.querySelector('input[name="email-choice"]:checked');
-      const emailField = document.getElementById('email-field');
-      emailField.style.display = choice && choice.value === 'willing' ? 'block' : 'none';
-    }
   </script>
 
 </body>
