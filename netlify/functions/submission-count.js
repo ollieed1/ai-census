@@ -1,6 +1,10 @@
 exports.handler = async () => {
-  const siteId = process.env.SITE_ID || 'a73d9293-70ad-4299-81be-423357bf2e86';
+  const siteId = process.env.SITE_ID;
   const token = process.env.NETLIFY_ACCESS_TOKEN;
+
+  if (!siteId) {
+    return { statusCode: 500, body: JSON.stringify({ error: 'No site ID configured' }) };
+  }
 
   if (!token) {
     return { statusCode: 500, body: JSON.stringify({ error: 'No access token' }) };
@@ -14,13 +18,26 @@ exports.handler = async () => {
     const census = forms.find(f => f.name === 'ai-census');
     const count = census ? census.submission_count : 0;
 
+    if (count < 1000) {
+      return {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'public, max-age=300',
+          'Netlify-CDN-Cache-Control': 'public, max-age=300'
+        },
+        body: JSON.stringify({ show: false })
+      };
+    }
+
     return {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'public, max-age=300'
+        'Cache-Control': 'public, max-age=300',
+        'Netlify-CDN-Cache-Control': 'public, max-age=300'
       },
-      body: JSON.stringify({ count, show: count >= 1000 })
+      body: JSON.stringify({ count, show: true })
     };
   } catch (err) {
     return { statusCode: 500, body: JSON.stringify({ error: 'Failed to fetch count' }) };
