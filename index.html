@@ -716,6 +716,22 @@
   </footer>
 
   <script>
+    // Rate limit check — redirect if already submitted today
+    fetch('/.netlify/functions/check-rate-limit')
+      .then(r => r.json())
+      .then(data => { if (!data.allowed) window.location.href = '/rate-limited.html'; })
+      .catch(() => {});
+
+    // Record submission on form submit
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form[name="ai-census"]');
+      if (form) {
+        form.addEventListener('submit', function() {
+          fetch('/.netlify/functions/record-submission', { method: 'POST' }).catch(() => {});
+        });
+      }
+    });
+
     fetch('/.netlify/functions/submission-count')
       .then(r => r.json())
       .then(data => {

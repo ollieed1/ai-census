@@ -1,0 +1,24 @@
+{
+  "name": "ai-census",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ollieed1/ai-census.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ollieed1/ai-census/issues"
+  },
+  "homepage": "https://github.com/ollieed1/ai-census#readme",
+  "dependencies": {
+    "@netlify/blobs": "^11.1.0"
+  }
+}
