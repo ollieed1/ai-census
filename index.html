@@ -908,7 +908,7 @@
         const val = el.value.trim();
         if (!val) { err.textContent = ''; err.classList.remove('visible'); return; }
         if (!val.match(new RegExp('^https?://(www\\.)?' + domain + '/.+'))) {
-          err.textContent = 'That doesn\'t look like a ' + domain + ' URL';
+          err.textContent = 'It\'s better to be honest, but you don\'t have to lie';
           err.classList.add('visible');
           el.style.borderColor = 'var(--red)';
         } else {
