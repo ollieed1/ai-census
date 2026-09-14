@@ -470,7 +470,7 @@
     </div>
 
     <!-- Form -->
-    <form name="ai-census" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <form name="ai-census" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="ai-census">
       <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
 
@@ -487,6 +487,17 @@
         <div class="field">
           <label for="nationality">Nationality</label>
           <input type="text" id="nationality" name="nationality" placeholder="e.g. British, French, Nigerian">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="github">GitHub <span class="optional">(optional)</span></label>
+          <input type="url" id="github" name="github" placeholder="https://github.com/username">
+        </div>
+        <div class="field">
+          <label for="linkedin">LinkedIn <span class="optional">(optional)</span></label>
+          <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username">
         </div>
       </div>
 
@@ -623,6 +634,7 @@
         <label for="email">Email address</label>
         <input type="email" id="email" name="email" placeholder="your@email.com">
       </div>
+
     </div>
 
     <div class="divider"></div>
